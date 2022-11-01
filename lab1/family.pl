@@ -48,29 +48,18 @@ mother(X, Y) :-
   female(X),
   parent(X, Y).
 
-% TODO: 
-% understand if this is correct or if it should be
-% redefined to allow siblings to be connected by a single parent
-% Replacing (father, mother) with (parent) causes duplicate sibling relationships
-brother(X, Y) :-
-  male(X),
-  father(F, X),
-  father(F, Y),
-  mother(M, X),
-  mother(M, Y),
-  X \= Y.
+sibling(S1, S2) :-
+  parent(P, S1),
+  parent(P, S2),
+  S1 \= S2.
 
-% TODO: 
-% understand if this is correct or if it should be
-% redefined to allow siblings to be connected by a single parent
-% Replacing (father, mother) with (parent) causes duplicate sibling relationships
-sister(X, Y) :-
-  female(X),
-  father(F, X),
-  father(F, Y),
-  mother(M, X),
-  mother(M, Y),
-  X \= Y.
+brother(B, S) :-
+  male(B),
+  sibling(B, S).
+
+sister(F, S) :-
+  female(F),
+  sibling(F, S).
 
 uncle(X, Y) :-
   brother(X, Z),
