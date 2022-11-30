@@ -39,3 +39,7 @@ See also ``is``. ``is`` is not a comparison operator, but is frequently confused
 * ``**`` Power
 * ``//`` Integer Division
 * ``mod`` Modulus
+
+### Dynamic predicates
+* ``assert/1`` inserts a predicate
+* ``retract/1`` removes a predicate
